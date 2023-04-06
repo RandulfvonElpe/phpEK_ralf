@@ -21,16 +21,16 @@ class UserTable extends QueryProvider
    {
       //set id = 0 help to prevent call befre initialization
       $this->id = 0;
-      parent::__construct();
+      parent::__construct();        # rufe construct aus der Elternklasse (QueryProvider)
    }
 
    /**
     * @return UserTable if email existed in DB
     * @return null if email does not existed in DB or connection failure 
     */
-   public function selectByEmail(string $email):UserTable|null
+   public function selectByEmail(string $email):UserTable|null       # zurückgegebener Datentyp: User Table oder null
    {
-      $sqlQuery = 'SELECT * FROM users WHERE email = :email';
+      $sqlQuery = 'SELECT * FROM users WHERE email = :email';        # :email 
       $arrayBind = [':email'=>$email];
       $result = $this->selectQuery($sqlQuery,$arrayBind);
       if(isset($result[0]))
@@ -43,7 +43,7 @@ class UserTable extends QueryProvider
 
    public function setUserByEmail(string $email):void
    {
-      $sqlQuery = 'SELECT * FROM users WHERE email = :email';
+       $sqlQuery = 'SELECT * FROM users WHERE email = :email';
       $arrayBind = [':email'=>$email];
       $result = $this->selectQuery($sqlQuery,$arrayBind);
       if(isset($result[0]))

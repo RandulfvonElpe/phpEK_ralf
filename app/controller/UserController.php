@@ -4,12 +4,12 @@ require_once('./app/model/User.php');
 use App\Model\User;
 
 
-class UserController extends User
+class UserController extends User           # UserController erbt von User
 {
     public function __construct()
     {
-        parent::__construct();
-    }
+        parent::__construct();          # rufe construct aus der Elternklasse (letztlich DatabasePdoConnection)
+    }                                    # PDO Instanz, stellt Verbindung zur Datenbank dar.
 
     public function register(string $email , string $password): bool
     {

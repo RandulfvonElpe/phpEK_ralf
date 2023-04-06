@@ -5,9 +5,9 @@ namespace App\Model;
 use App\Table\UserTable;
 
 require_once('./app/table/UserTable.php');
-class User extends UserTable
+class User extends UserTable            # User erbt von UserTable 
 {
-    public function __construct()
+    public function __construct()           # rufe construct aus der Elternklasse (UserTable)
     {
         parent::__construct();
     }

@@ -1,19 +1,21 @@
 <?php
-
-require_once('./app/controller/UserController.php');
-use App\Controller\UserController;
+session_start();         # session id vergeben, prüfen, cookie setzen etc.
+require_once('./app/controller/UserController.php');      # wie include_once, bricht aber bei einem Fehler ab
+use App\Controller\UserController;      # bildet Alias "UserController" von dem fully qualified Name/path 
 
 $email = "";
 $error = "";
-if (isset($_POST['email'])) {
-  $controller = new UserController();
-  $result = $controller->login($_POST['email'], $_POST['password']);
-  if($result)
-  {
+if (isset($_POST['email']))     # ist Variable () deklariert und != null ?  $_POST: Super Globale Variable enthält
+ {                                #  hier die email aus dem html Script unten. 
+    $controller = new UserController();
+    $result = $controller->login($_POST['email'], $_POST['password']);      # Zugriff auf $Controller.login
+    if($result)
+    {
     header('location:profile.php');
-  }
+    }
   else
   {
+   var_dump($email);
    $error =  "user pass wrong";
   }
  
@@ -25,7 +27,7 @@ include('./template/navbar.php');
   <h1>Login</h1>
   
   <div class="card flex m-5 p-5 bg-secondary bg-opacity-10">
-  <?= $email ?>
+   
     <form method="post" class="">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>

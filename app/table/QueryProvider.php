@@ -15,7 +15,7 @@ class QueryProvider extends DatabasePdoConnection
      */
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct(); # rufe construct aus der Elternklasse (DatabasePdoConnection)
     }
 
     /**
