@@ -43,7 +43,7 @@ class UserTable extends QueryProvider
 
    public function setUserByEmail(string $email):void
    {
-       $sqlQuery = 'SELECT * FROM users WHERE email = :email';
+      $sqlQuery = 'SELECT * FROM users WHERE email = :email';
       $arrayBind = [':email'=>$email];
       $result = $this->selectQuery($sqlQuery,$arrayBind);
       if(isset($result[0]))
